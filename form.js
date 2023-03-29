@@ -2,11 +2,8 @@ window.addEventListener("load", () => {
   setInterval(checkHistory, 4000);
   let chaptersArray = [];
   let csv;
-  let form = document.querySelector("#mktoForm_1852");
   let chapters = document.querySelectorAll("[w-el='chapter']");
   let history;
-
-  // console.log(chapters);
 
   chapters.forEach((chapter) => {
     chapter.addEventListener("click", function () {
@@ -18,8 +15,10 @@ window.addEventListener("load", () => {
   });
 
   function checkHistory() {
-    history = form.querySelector("input[name='history']");
-    history.value = csv;
+    history = document.querySelectorAll("input[name='history']");
+    history.forEach((entry) => {
+      entry.value = csv;
+    });
   }
 
   // Create a function to handle the form submission event
@@ -33,7 +32,7 @@ window.addEventListener("load", () => {
       const originalElement = document.querySelector(".form-headings");
       // Set the "display" style property to "block"
       confirmationElement.style.display = "block";
-      originalElement.style.display = "one";
+      originalElement.style.display = "none";
     }
   };
   // Add an event listener for the "form submit success" event
